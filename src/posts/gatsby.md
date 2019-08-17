@@ -1,6 +1,6 @@
 ---
 title: "The Great Gastby Bootcamp"
-data : "2019-08-17"
+date : "2019-08-17"
 ---
 
 I just launched a new bootcamp
