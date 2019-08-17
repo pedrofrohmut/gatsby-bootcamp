@@ -1,0 +1,25 @@
+.global {
+}
+
+.container {
+  margin: -8px auto 0 !important;
+  padding: -8px 0 0 0;
+
+  max-width: 750px;
+  min-height: 100vh;
+  position: relative;
+}
+
+.content {
+  margin: -22px auto 0 !important;
+  padding: 0;
+}
+
+.footer {
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
