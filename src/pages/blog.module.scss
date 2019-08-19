@@ -1,0 +1,27 @@
+.posts {
+  list-style-type: none;
+  margin: 1rem 0;
+
+  li {
+    margin-bottom: 1rem;
+  }
+
+  li:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.post {
+  padding: 0.5rem 1rem;
+
+  a {
+    color: #333;
+    display: block;
+  }
+
+  p {
+    font-weight: 300;
+    color: #888;
+    font-size: 0.8rem;
+  }
+}
