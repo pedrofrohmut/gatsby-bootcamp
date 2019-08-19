@@ -7,42 +7,40 @@ import blogStyles from "./blog.module.scss"
 const BlogPage = () => {
   const data = useStaticQuery(graphql`
     {
-      allMarkdownRemark {
+      allContentfulBlogPost(sort: { fields: publishedAt, order: DESC }) {
         edges {
           node {
-            frontmatter {
-              title
-              date
-            }
-            fields {
-              slug
-            }
+            title
+            slug
+            publishedAt(formatString: "MMMM Do, YYYY")
           }
         }
       }
     }
   `)
 
+  const { edges } = data.allContentfulBlogPost
   return (
     <Layout>
       <h1>Blog</h1>
-      <p>Posts will be show here later on.</p>
-      <ol className={blogStyles.posts}>
-        {data.allMarkdownRemark.edges.map((edge) => {
-          const { title, date } = edge.node.frontmatter
-          const { slug } = edge.node.fields
-          return (
-            <li key={title}>
-              <div className={blogStyles.post}>
-                <Link to={`/blog/${slug}`}>
-                  <h2>{title}</h2>
-                </Link>
-                <p className="date">{date}</p>
-              </div>
-            </li>
-          )
-        })}
-      </ol>
+      {edges.length === 0 && <p>No posts to display at the moment.</p>}
+      {edges.length > 0 && (
+        <ol className={blogStyles.posts}>
+          {edges.map((edge) => {
+            const { title, slug, publishedAt } = edge.node
+            return (
+              <li key={slug}>
+                <div className={blogStyles.post}>
+                  <Link to={`/blog/${slug}`}>
+                    <h2>{title}</h2>
+                  </Link>
+                  <p className="date">{publishedAt}</p>
+                </div>
+              </li>
+            )
+          })}
+        </ol>
+      )}
     </Layout>
   )
 }
