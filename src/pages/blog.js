@@ -3,6 +3,7 @@ import Layout from "../components/layout/Layout"
 import { graphql, Link, useStaticQuery } from "gatsby"
 
 import blogStyles from "./blog.module.scss"
+import Head from "../components/Head"
 
 const BlogPage = () => {
   const data = useStaticQuery(graphql`
@@ -22,6 +23,7 @@ const BlogPage = () => {
   const { edges } = data.allContentfulBlogPost
   return (
     <Layout>
+      <Head title="Blog" />
       <h1>Blog</h1>
       {edges.length === 0 && <p>No posts to display at the moment.</p>}
       {edges.length > 0 && (

@@ -24,5 +24,5 @@ Content of the Tutorial an this project:
 - [X] 16. Getting Started with Contentful
 - [X] 17. Rendering Contentful Posts
 - [X] 18. Dynamic Pages from Contentful
-- [ ] 19. 404 Pages and React Helmet
+- [X] 19. 404 Pages and React Helmet
 - [ ] 20. Deploying Your Gatsby Site

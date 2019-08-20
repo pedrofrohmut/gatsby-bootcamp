@@ -6,6 +6,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS } from "@contentful/rich-text-types"
 
 import Layout from "../components/layout/Layout"
+import Head from "../components/Head"
 import blogStyles from "./blog.module.scss"
 
 export const query = graphql`
@@ -35,6 +36,7 @@ const Blog = (props) => {
   const { json } = body
   return (
     <Layout>
+      <Head title={title} />
       <h1>{title}</h1>
       <div className={blogStyles.date}>{publishedAt}</div>
       <div className={blogStyles.body}>

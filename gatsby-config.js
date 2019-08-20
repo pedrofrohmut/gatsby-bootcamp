@@ -10,6 +10,7 @@ module.exports = {
     author: "Pedro Frohmut"
   },
   plugins: [
+    "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-source-contentful",
       options: {
