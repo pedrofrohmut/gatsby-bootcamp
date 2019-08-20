@@ -13,16 +13,6 @@ const IndexPage = function () {
         {" "}
         <Link to="/contact">Contact Me</Link>
       </p>
-
-      <button
-        type="button"
-        onClick={() => {
-          setIsOpen(!isOpen)
-        }}
-      >
-        Toggle Open
-      </button>
-      <div>{isOpen ? "IS OPEN" : "IS CLOSED"}</div>
     </Layout>
   )
 }

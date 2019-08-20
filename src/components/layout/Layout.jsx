@@ -13,8 +13,8 @@ const Layout = ({ children }) => (
         <Header />
         {children}
       </div>
-      <Footer className={layoutStyles.footer} />
     </div>
+    <Footer className={layoutStyles.footer} />
   </div>
 )
 

@@ -1,22 +1,6 @@
 const path = require("path")
 
 // Method call as it is in the Node API Docs
-module.exports.onCreateNode = function ({ node, actions }) {
-  const { createNodeField } = actions
-  // Filter out all Nodes that are not .md
-  if (node.internal.type !== "MarkdownRemark") {
-    return
-  }
-  // Get the file name and removes ext '.md'
-  const slug = path.basename(node.fileAbsolutePath, ".md")
-  createNodeField({
-    node,
-    name: "slug",
-    value: slug,
-  })
-}
-
-// Method call as it is in the Node API Docs
 module.exports.createPages = async function ({ graphql, actions }) {
   const { createPage } = actions
   // 1. Get path to template page
@@ -24,25 +8,24 @@ module.exports.createPages = async function ({ graphql, actions }) {
   // 2. Get Markdown data
   const response = await graphql(`
     {
-      allMarkdownRemark {
+      allContentfulBlogPost {
         edges {
           node {
-            fields {
-              slug
-            }
+            slug
           }
         }
       }
     }
   `)
   // 3. Create new pages
-  response.data.allMarkdownRemark.edges.forEach((edge) => {
+  response.data.allContentfulBlogPost.edges.forEach((edge) => {
+    const { slug } = edge.node
     createPage({
       component: blogTemplate,
-      path: `/blog/${edge.node.fields.slug}`,
+      path: `/blog/${slug}`,
       context: {
-        slug: edge.node.fields.slug,
-      },
+        slug
+      }
     })
   })
 }
